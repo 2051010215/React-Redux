@@ -11,12 +11,12 @@ const CartList = () => {
     const { cartList } = data
     console.log(cartList);
 
-    const addCart = (name) => {
-        dispatch(addToCart(name))
+    const addCart = (id) => {
+        dispatch(addToCart(id))
     }
 
-    const addDelete = (name) => {
-        dispatch(removeFromCart(name))
+    const addDelete = (id) => {
+        dispatch(removeFromCart(id))
     }
     return (
         <>
@@ -36,7 +36,7 @@ const CartList = () => {
                                     variant='primary'
                                     onClick={() => addCart(items.id)}
                                 >
-                                    Add To Cart
+                                    Add To Cart!
                                 </Button>
                             </Col>
 
@@ -45,37 +45,39 @@ const CartList = () => {
                 ))}
             </ListGroup>
 
-            <ListGroup> <h4 className='text-start ms-2 mt-3'>Cart:</h4>
-                {cartList.map((items,) => (
-                    <ListGroupItem>
-                        <Row>
-                            <Col xs={4} md={4} className='text-start' >
-                                {products.find((i) => i.id === items.id).name}
-                            </Col>
-                            {items.quantity > 1 ? (<Col xs={4} md={4} className='text-start' >
-                                x{items.quantity}
-                            </Col>) : (<Col xs={4} md={4} className='text-start' >
-                                x1
-                            </Col>)}
+            {cartList.length > 0 ? (
+                <ListGroup> <h4 className='text-start ms-2 mt-3'>Cart:</h4>
+                    {cartList.map((items,) => (
+                        <ListGroupItem>
+                            <Row>
+                                <Col xs={4} md={4} className='text-start' >
+                                    {products.find((i) => i.id === items.id).name}
+                                </Col>
+                                {items.quantity > 1 ? (<Col xs={4} md={4} className='text-start' >
+                                    x{items.quantity}
+                                </Col>) : (<Col xs={4} md={4} className='text-start' >
+                                    x1
+                                </Col>)}
 
-                            {items.quantity === undefined ?
-                                (<Col xs={3} md={3} className='text-start' >{products.find((i) => i.id === items.id).price}</Col>)
-                                :
-                                (<Col xs={3} md={3} className='text-start' > {products.find((i) => i.id === items.id).price * items.quantity} </Col>)
-                            }
-                            <Col md={1} xs={1} className='px-1'>
-                                <Button
-                                    variant='danger'
-                                    onClick={() => addDelete(items.id)}
-                                >
-                                    Delete
-                                </Button>
-                            </Col>
+                                {items.quantity === undefined ?
+                                    (<Col xs={3} md={3} className='text-start' >{products.find((i) => i.id === items.id).price}</Col>)
+                                    :
+                                    (<Col xs={3} md={3} className='text-start' > {products.find((i) => i.id === items.id).price * items.quantity} </Col>)
+                                }
+                                <Col md={1} xs={1} className='px-1'>
+                                    <Button
+                                        variant='danger'
+                                        onClick={() => addDelete(items.id)}
+                                    >
+                                        Delete
+                                    </Button>
+                                </Col>
 
-                        </Row>
-                    </ListGroupItem>
-                ))}
-            </ListGroup>
+                            </Row>
+                        </ListGroupItem>
+                    ))}
+                </ListGroup>
+            ):(<h2 className='my-4'>You Dont Have Anything In Cart</h2>)}
         </>
     )
 }

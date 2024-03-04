@@ -24,3 +24,18 @@ export const removeFromCart = (productId) => async (dispatch, getState) => {
 
     // localStorage.setItem('ListOrderItems', JSON.stringify(getState().cartItems.cartList))
 }
+
+
+//curryingFunction
+//Webpack
+//dùng webpack tạo 1 ứng dụng react
+//vite
+//dùng vite tạo 1 ứng dụng react
+//nextjs
+
+//antDesign
+//reactHookForm
+//styledComponent
+
+//áp dụng redux toolkit
+//call fake api

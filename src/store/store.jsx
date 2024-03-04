@@ -22,19 +22,7 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, reducer)
 
-//load data từ localStorage
-// const todoItemsFromStorage = localStorage.getItem('ListItems') ? JSON.parse(localStorage.getItem('ListItems')) : []
-// const cartItemsFromStorage = localStorage.getItem('ListOrderItems') ? JSON.parse(localStorage.getItem('ListOrderItems')) : []
-
-//gán data từ localStorage vào initialState
-// const initialState = {
-//     todoItems: { todoList: todoItemsFromStorage },
-//     cartItems: { cartList: cartItemsFromStorage }
-// }
-
 const store = createStore(
-    // reducer,
-    // initialState,
     persistedReducer,
     composeWithDevTools(applyMiddleware(...middleware))
 )
