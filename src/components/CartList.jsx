@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Col, ListGroup, ListGroupItem, Row } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import { addToCart, removeFromCart } from '../actions/cartAction'
+import { addProductToCart, removeProductFromCart } from '../actions/cartAction'
 import { products } from '../product'
 
 const CartList = () => {
@@ -12,11 +12,11 @@ const CartList = () => {
     console.log(cartList);
 
     const addCart = (id) => {
-        dispatch(addToCart(id))
+        dispatch(addProductToCart(id))
     }
 
     const addDelete = (id) => {
-        dispatch(removeFromCart(id))
+        dispatch(removeProductFromCart(id))
     }
     return (
         <>
@@ -36,7 +36,7 @@ const CartList = () => {
                                     variant='primary'
                                     onClick={() => addCart(items.id)}
                                 >
-                                    Add To Cart!
+                                    Add To Cart
                                 </Button>
                             </Col>
 

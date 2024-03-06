@@ -3,6 +3,7 @@ import { Card } from 'react-bootstrap'
 import ToDoAddForm from '../components/ToDoAddForm'
 import ToDoList from '../components/ToDoList'
 import CartList from '../components/CartList'
+import UserList from '../components/UserList'
 
 const Home = () => {
     return (
@@ -16,6 +17,7 @@ const Home = () => {
                 <h3 className='text-center text-secondary mt-3'>Tasks List</h3>
                 <ToDoList/>
                 <CartList/>
+                <UserList/>
             </Card>
         </>
     )
